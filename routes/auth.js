@@ -110,4 +110,18 @@ router.post('/login', async(req, res) => {
     */
 })
 
+router.post('/delete', async(req, res) => {
+    let {id} = req.body
+    try {
+        await User.findByIdAndDelete(id)
+        res.json({
+            error: null,
+            message: 'SUCCESS'
+        })
+    } catch (error) {
+        res.status(400).json(error)
+    }
+    
+})
+
 module.exports = router

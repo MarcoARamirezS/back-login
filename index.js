@@ -20,6 +20,7 @@ app.use(bodyparser.json())
 
 // Conexion a BD
 // const url = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.go8qi0c.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
+console.log(process.env.USERNAME, process.env.PASSWORD)
 const url = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.go8qi0c.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 const options = {
     useNewUrlParser: true,
