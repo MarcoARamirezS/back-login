@@ -112,22 +112,24 @@ router.post('/login', async(req, res) => {
 
 router.post('/update', async(req, res) => {
     // console.log(id)
-    let id = { _id: req.body._id }
-    let name = req.body.name
-    let email = req.body.email
+    let id = req.body._id
     let update = {
-        name,
-        email
+        name: req.body.name,
+        email: req.body.email
     }
-    try {
-        await User.findOneAndUpdate(id,update, {new: true})
-            res.json({
-                error: null,
-                message: updated
-            })
-    } catch (error) {
-        res.status(400).json(error)
-    }   
+    await User.findByIdAndUpdate(
+        {_id: id},
+        update,
+        (err, result) => {
+            if(err){
+                res.status(400).json(err)
+            }else{
+                res.json({
+                    error: null,
+                    message: result
+                })
+            }
+        })
 })
 
 router.post('/delete', async(req, res) => {
