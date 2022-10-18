@@ -110,13 +110,13 @@ router.post('/login', async(req, res) => {
     */
 })
 
-router.post('/update', async(req, res) => {
+router.post('/update', (req, res) => {
     let id = req.body._id
     let update = {
         name: req.body.name,
         email: req.body.email
     }
-    await User.findByIdAndUpdate(
+    User.findByIdAndUpdate(
         {_id: id},
         update,
         (err, result) => {
