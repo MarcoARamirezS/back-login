@@ -112,7 +112,7 @@ router.post('/login', async(req, res) => {
 
 router.post('/update', async(req, res) => {
     // console.log(id)
-    let id = req.body._id
+    let id = { _id: req.body._id }
     let name = req.body.name
     let email = req.body.email
     let update = {
@@ -120,7 +120,7 @@ router.post('/update', async(req, res) => {
         email
     }
     try {
-        await User.findOneAndUpdate(id,update)
+        await User.findOneAndUpdate(id,update, {new: true})
             res.json({
                 error: null,
                 message: updated
