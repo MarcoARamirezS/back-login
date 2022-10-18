@@ -111,7 +111,6 @@ router.post('/login', async(req, res) => {
 })
 
 router.post('/update', async(req, res) => {
-    // console.log(id)
     let id = req.body._id
     let update = {
         name: req.body.name,
