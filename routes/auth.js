@@ -117,9 +117,9 @@ router.post('/update', (req, res) => {
         email: req.body.email
     }
     User.findByIdAndUpdate(
-        {_id: id},
-        update,
-        (err, result) => {
+        {_id: id}, // id a actualizar
+        update, // objeto con los  valores a modificar
+        (err, result) => { // funcion para actualizar
             if(err){
                 res.status(400).json(err)
             }else{
